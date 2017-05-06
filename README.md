@@ -1,6 +1,6 @@
 # Valet
 
-> A local [Laravel Valet](https://laravel.com/docs/valet) driver [WordPlate](https://wordplate.github.io).
+> A local [Laravel Valet](https://laravel.com/docs/valet) driver for [WordPlate](https://wordplate.github.io).
 
 [![StyleCI](https://styleci.io/repos/90487737/shield?style=flat)](https://styleci.io/repos/90487737)
 [![License](https://img.shields.io/github/license/wordplate/valet.svg?style=flat)](https://github.com/wordplate/valet/blob/master/LICENSE)
