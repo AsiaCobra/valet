@@ -9,7 +9,7 @@
 
 Copy the [`LocalValetDriver.php`](LocalValetDriver.php) file and put it in the root of your WordPlate project. If you want to read more about local drivers for Laravel Valet, please see the following links:
 
-- [Documentation](https://laravel.com/docs/5.4/valet#custom-valet-drivers) - Laravel
+- [Custom Valet Drivers](https://laravel.com/docs/5.4/valet#custom-valet-drivers) - Laravel
 - [Laravel Valet Supports Custom Per-Site Drivers](https://laravel-news.com/valet-per-site-drivers) - Laravel News
 
 ## License
