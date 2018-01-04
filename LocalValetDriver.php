@@ -1,14 +1,3 @@
-<?php
-
-/*
- * This file is part of WordPlate.
- *
- * (c) Vincent Klaiber <hello@vinkla.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 /**
  * This is the local valet driver class.
  *
@@ -37,7 +26,7 @@ final class LocalValetDriver extends BasicValetDriver
      * @param string $siteName
      * @param string $uri
      *
-     * @return string|false
+     * @return false|string
      */
     public function isStaticFile($sitePath, $siteName, $uri)
     {
@@ -62,9 +51,12 @@ final class LocalValetDriver extends BasicValetDriver
     public function frontControllerPath($sitePath, $siteName, $uri)
     {
         $_SERVER['PHP_SELF'] = $uri;
+        $_SERVER['SERVER_NAME'] = $_SERVER['HTTP_HOST'];
 
         if (strpos($uri, '/wordpress/') === 0) {
             if (is_dir($sitePath.'/public'.$uri)) {
+                $uri = $this->forceTrailingSlash($uri);
+
                 return $sitePath.'/public'.$uri.'/index.php';
             }
 
@@ -72,5 +64,22 @@ final class LocalValetDriver extends BasicValetDriver
         }
 
         return $sitePath.'/public/index.php';
+    }
+
+    /**
+     * Redirect to uri with trailing slash.
+     *
+     * @param  string $uri
+     *
+     * @return string
+     */
+    private function forceTrailingSlash($uri)
+    {
+        if (substr($uri, -1 * strlen('/wp/wp-admin')) == '/wp/wp-admin') {
+            header('Location: '.$uri.'/');
+            die;
+        }
+
+        return $uri;
     }
 }
